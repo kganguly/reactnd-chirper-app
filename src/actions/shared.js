@@ -6,7 +6,7 @@ import { setAuthedUser } from './authedUser';
 // Faking authentication
 const AUTHED_ID = 'sarah_edo';
 
-export function handleInitialDate() {
+export function handleInitialData() {
   return (dispatch, getState) => {
     return getInitialData()
       .then(({ users, tweets }) => {
