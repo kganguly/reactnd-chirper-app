@@ -125,6 +125,11 @@ li {
   color: #00b5d6;
   cursor: pointer;
 }
+
+.hearted {
+  color: red;
+}
+
 .replying-to {
   border: none;
   background: transparent;
