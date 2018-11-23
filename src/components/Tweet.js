@@ -4,6 +4,17 @@ import { formatDate, formatTweet } from '../utils/helpers';
 import { TiArrowBackOutline, TiHeartOutline, TiHeartFullOutline } from 'react-icons/ti';
 
 class Tweet extends Component {
+  handleLike = e => {
+    e.preventDefault();
+
+    // TODO: Handle like tweet
+  }
+
+  toParent = (e, id) => {
+    e.preventDefault();
+    // TODO: Redirect to parent tweet
+  };
+
   render() {
     const { tweet } = this.props;
 
@@ -22,14 +33,19 @@ class Tweet extends Component {
           <div>
             <span>{name}</span>
             <div>{formatDate(timestamp)}</div>
-            {parent && (<button className='replying-to' onClick=''>Replying to @{parent.author}</button>)}
+            {parent && (<button className='replying-to' onClick={e => this.toParent(e, parent.id)}>Replying to @{parent.author}</button>)}
+            <p>{text}</p>
           </div>
-          <p>{text}</p>
+
           <div className='tweet-icons'>
             <TiArrowBackOutline className='tweet-icon' />
-            {replies > 0 ? (<span>{replies}</span>) : null}
-            {hasLiked ? (<TiHeartFullOutline className='tweet-icon hearted' />) : (<TiHeartOutline className='tweet-icon' />)}
-            {likes > 0 ? (<span>{likes}</span>) : null}
+            <span>{replies !== 0 && replies}</span>
+            <button className='heart-button' onClick={this.handleLike}>
+              {hasLiked
+                ? <TiHeartFullOutline className='tweet-icon hearted' />
+                : <TiHeartOutline className='tweet-icon' />}
+            </button>
+            <span>{likes !== 0 && likes}</span>
           </div>
         </div>
       </div>
