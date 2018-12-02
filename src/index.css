@@ -28,9 +28,13 @@ a {
   position: relative;
 }
 
-.btn:hover {
+.btn:not([disabled]):hover {
   border-color: rgba(0,0,0,.5);
   text-decoration: none;
+}
+
+.btn[disabled] {
+  cursor: default;
 }
 
 .btn:focus {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Tweet from './Tweet';
 
@@ -22,6 +23,14 @@ class Dashboard extends Component {
     );
   }
 }
+
+Dashboard.defaultProps = {
+  tweetIds: [],
+};
+
+Dashboard.propTypes = {
+  tweetIds: PropTypes.arrayOf(PropTypes.string),
+};
 
 function mapStateToProps({ tweets }) {
   return {

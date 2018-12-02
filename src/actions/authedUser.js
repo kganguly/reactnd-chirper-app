@@ -5,4 +5,4 @@ export function setAuthedUser(id) {
     type: SET_AUTHED_USER,
     id,
   };
-};
+}
