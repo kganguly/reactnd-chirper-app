@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { handleToggleTweet } from '../actions/tweets'
 import { formatDate, formatTweet } from '../utils/helpers';
 import { TiArrowBackOutline, TiHeartOutline, TiHeartFullOutline } from 'react-icons/ti';
 
@@ -7,8 +8,14 @@ class Tweet extends Component {
   handleLike = e => {
     e.preventDefault();
 
-    // TODO: Handle like tweet
-  }
+    const { authedUser, dispatch, tweet } = this.props;
+
+    dispatch(handleToggleTweet({
+      id: tweet.id,
+      hasLiked: tweet.hasLiked,
+      authedUser,
+    }));
+  };
 
   toParent = (e, id) => {
     e.preventDefault();
@@ -59,6 +66,7 @@ function mapStateToProps({ users, tweets, authedUser }, { tweetId }) {
   const parentTweet = tweet ? tweets[tweet.replyingTo] : null;
 
   return {
+    authedUser,
     tweet: tweet ? formatTweet(tweet, author, authedUser, parentTweet) : null,
   }
 }
