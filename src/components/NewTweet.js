@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { handleAddTweet } from '../actions/tweets';
+import { dispatch } from 'rxjs/internal/observable/range';
 
 class NewTweet extends Component {
   state = {
@@ -22,6 +24,8 @@ class NewTweet extends Component {
 
     console.log('New Tweet:', text);
 
+    dispatch(handleAddTweet(text));
+
     this.setState(() => ({
       text: '',
     }));
@@ -31,7 +35,7 @@ class NewTweet extends Component {
     const { text } = this.state;
     const tweetsLeft = 280 - text.length;
 
-    { /* TODO: Redirect to home view if submitted */ }
+    /* TODO: Redirect to home view if submitted */
 
     return (
       <div>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { handleInitialData } from '../actions/shared';
-import Dashboard from './Dashboard';
+// import Dashboard from './Dashboard';
 import LoadingBar from 'react-redux-loading';
 import NewTweet from './NewTweet';
 
